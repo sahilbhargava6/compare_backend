@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductCompareController;
 use App\Http\Controllers\ProductIngestionController;
 use App\Http\Controllers\SkinAnalysisController;
 use App\Http\Controllers\UserProfileController;
@@ -17,6 +18,7 @@ Route::prefix('skin')->group(function () {
 });
 
 Route::prefix('products')->group(function () {
+    Route::post('/compare', [ProductCompareController::class, 'compare'])->name('products.compare');
     Route::post('/ingest', [ProductIngestionController::class, 'ingest'])->name('products.ingest');
     Route::get('/{id}', [ProductIngestionController::class, 'show'])->name('products.show');
 });
